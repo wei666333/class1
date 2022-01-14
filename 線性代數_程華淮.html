@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>線性代數_程華淮</title>
+    <style type="text/css">
+        html,
+        body {
+            font-family: noto sans cjk tc regular;
+            background-color:#a66e6e;
+        }
+        
+        body {
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: 	#6a5c71;
+            font-size: 14px;
+            line-height: 1.5;
+            letter-spacing: 1.5px;
+        }
+
+        /* 複寫區 */
+
+        ul {
+            padding: 0px;
+            list-style: none;
+        }
+
+        h1 {
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        h2::after {
+            content: " ";
+            display: inline-block;
+            background-color: #E2CD8A;
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+        }
+
+        h4 {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.6;
+        }
+
+        a {
+            text-decoration: initial;
+            color: #707070;
+        }
+
+        hr {
+            border: none;
+            border-bottom: solid 2px #E2CD8A;
+            width: 40%;
+            margin-left: 0;
+        }
+
+
+        /* resume */
+
+        .resume {
+            display: flex;
+            max-width: 900px;
+            background-color: #fff;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            border-bottom: solid 10px #E2CD8A;
+        }
+
+        .left,
+        .right {
+            padding: 20px;
+        }
+
+        /* letf */
+
+        .left {
+            flex: 5;
+            padding-right: 50px;
+            border-right: solid 0.5px #E2CD8A;
+        }
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        .btn1 {
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #E2CD8A;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .btn1:hover {
+            background-color: #ead9a4;
+        }
+
+        .btn2 {
+            padding: 10px;
+            border: solid 1px #E2CD8A;
+            border-radius: 5px;
+            color: #E2CD8A
+        }
+
+        .btn2:hover {
+            border-radius: 0px;
+        }
+
+        .listSkill {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+
+        }
+
+        .listSkill li {
+            width: 33%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #555;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(226, 205, 138, 0.5);
+        }
+
+        .circle::after {
+            content: " ";
+            display: block;
+            background-color: #fff;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            border-radius: 50%;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .p90 {
+            width: 50%;
+            height: 50%;
+            top: 0;
+            left: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p180 {
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p270 {
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            right: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p360 {
+            width: 50%;
+            height: 50%;
+            top: 0;
+            right: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .software li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .software .bar {
+            width: 200px;
+            height: 10px;
+            border: solid 0.5px #E2CD8A;
+            border-radius: 30px;
+        }
+
+        .value {
+            height: 100%;
+            width: 60%;
+            background-color: #E2CD8A;
+            border-radius: 30px;
+        }
+
+        .value.p20 {
+            width: 20%;
+        }
+
+        .value.p30 {
+            width: 30%;
+        }
+
+        .value.p32 {
+            width: 32%;
+        }
+
+        .value.p35 {
+            width: 35%;
+        }
+
+        .value.p36 {
+            width: 36%;
+        }
+
+        .value.p40 {
+            width: 40%;
+        }
+
+        .value.p60 {
+            width: 60%;
+        }
+
+        .value.p80 {
+            width: 80%;
+        }
+
+        /* right */
+
+        .right {
+            flex: 7;
+            padding-left: 50px;
+            padding-top: 120px;
+        }
+
+        .decoration {
+            width: 300px;
+            height: 140px;
+            background: linear-gradient(135deg, #bd9494, #DEDEDE);
+            border-radius: 50% 0;
+            position: absolute;
+            right: 0;
+            top: 30px;
+        }
+
+        .experience>li {
+            display: flex;
+            margin-bottom: 10px;
+
+        }
+
+        .experience li ul {
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: solid 4px #E2CD8A;
+        }
+
+        .experience li:nth-child(1) ul {
+            border-left: solid 4px #E2CD8A
+        }
+
+        .experience li:nth-child(2) ul {
+            border-left: solid 4px #ead596
+        }
+
+        .experience li:nth-child(3) ul {
+            border-left: solid 4px #ecdba6
+        }
+
+        .experience li:nth-child(4) ul {
+            border-left: solid 4px #f2e3b5
+        }
+
+        .experience li:nth-child(5) ul {
+            border-left: solid 4px #f4e9c8
+        }
+
+        .experience li:nth-child(6) ul {
+            border-left: solid 4px #f5ecd3
+        }
+
+        .experience li:nth-child(7) ul {
+            border-left: solid 4px #f6ebd6
+        }
+
+        .experience li:nth-child(8) ul {
+            border-left: solid 4px #f8ebd6
+        }
+
+        .smalltext {
+            opacity: 70%;
+            font-size: 10px;
+            margin-left: 0;
+        }
+
+        .competition li {
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="left">
+            <img src="程華淮 (1).png"
+                alt="" width="150em" height="150em">
+            <h1>程華淮</h1>
+            <h4>國立清華大學數學博士</h4>
+            <hr>
+            <p>felix@mail.ntou.edu.tw</p>
+            <div class="buttons">
+                <a class="btn1 fill" href="https://arspb.most.gov.tw/NSCWebFront/modules/talentSearch/talentSearch.do?action=initRsm05&rsNo=e080f4b2f3a9498dbf41d53295b8901e"
+                 target="_blank">著作</a>
+                 <a class="btn2" href="https://cse.ntou.edu.tw/p/412-1063-7772.php?Lang=zh-tw"
+                    target="_blank">系所自介</a>
+            </div>
+            <div class="block">
+                <h4>Pass or Fail</h4>
+                <h2>推薦程度</h2>
+                <ul class="competition">
+                    <li><img src = "star1.jpg" width = "150px"></li>
+                    <li>這門課超級難!!!</li>
+                    <li>各位別想不開!如果是學霸熱烈歡迎</li>
+                </ul>
+            </div>
+            <div class="block">
+                <h4>Conditions & Notices</h4>
+                <h2>條件 & 須知</h2>
+                <ul class="competition">
+                    <li>•必修-3學分</li>
+                    <li>•要在老師面前刷存在感</li>
+                    <li>•盡量不要遲到</li>
+                </ul>
+            </div>
+            <div class="block">
+                <h4>score range</h4>
+                <h2>分數占比</h2>
+                <ul class="software">
+                    <li>
+                        平時小考         Quiz
+                        <div class="bar">
+                            <div class="value p40"></div>42%
+                        </div>
+                    </li>
+                    <li>
+                        期中考        Midtest
+                        <div class="bar">
+                            <div class="value p30"></div>29%
+                        </div>
+                    </li>
+                    <li>
+                        期末考       Fintest
+                        <div class="bar">
+                            <div class="value p30"></div>29%
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="decoration"></div>
+            <div class="block">
+                <h4>course</h4>
+                <h2>線性代數</h2>
+                <ul class="experience">
+                    <li class="year">start
+                        <ul>
+                            <li>矩陣代數、向量空間(1)<br><span class="smalltext">Vector Spaces(1)</li>
+                            <li>矩陣代數、向量空間(2)<br><span class="smalltext">Vector Spaces(2)</li>
+                            <li>線性變換(1)<br><span class="smalltext">Linear Transformations(1)</li>
+                            <li>線性變換(2)<br><span class="smalltext">Linear Transformations(2)</li>
+                            <li>矩陣之特徵值(1)<br><span class="smalltext">Eigenvalues(1)</li>
+                            <li>矩陣之特徵值(2)<br><span class="smalltext">Eigenvalues(2)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test1
+                        <ul>
+                            1st小考<br><span class="smalltext">First-test
+                        </ul>
+                    </li>
+                    <li class="year">start
+                        <ul>
+                            <li>矩陣之特徵值(1)<br><span class="smalltext">Eigenvalues(1)</li>
+                            <li>矩陣之特徵值(2)<br><span class="smalltext">Eigenvalues(2)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test2
+                        <ul>
+                            期中考<br><span class="smalltext">Midterm
+                        </ul>
+                    </li>
+                    <li class="year">then 
+                        <ul>
+                            <li>特徵向量(1)<br><span class="smalltext">Eigenvetors)(1)</li>
+                            <li>特徵向量(2)<br><span class="smalltext">Eigenvetors)(2)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test2
+                        <ul>
+                            2nd小考<br><span class="smalltext">secondtest
+                        </ul>
+                    </li>
+                    <li class="year">then 
+                        <ul>
+                            <li>矩陣對角線化(1)<br><span class="smalltext">Diagonalization(1)</li>
+                            <li>矩陣對角線化(2)<br><span class="smalltext">Diagonalization(2)</li>
+                            <li>其各種應用(1)<br><span class="smalltext">Else(1)</li>
+                            <li>其各種應用(2)<br><span class="smalltext">Eise(2)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test4
+                        <ul>
+                            期末考<br><span class="smalltext">Final Exam
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

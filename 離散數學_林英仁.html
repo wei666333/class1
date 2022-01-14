@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>離散數學_林英仁</title>
+    <style type="text/css">
+        html,
+        body {
+            font-family: noto sans cjk tc regular;
+            background-color: #a66e6e;
+        }
+
+        body {
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6a5c71;
+            font-size: 14px;
+            line-height: 1.5;
+            letter-spacing: 1.5px;
+        }
+
+        /* 複寫區 */
+
+        ul {
+            padding: 0px;
+            list-style: none;
+        }
+
+        h1 {
+            margin: 0;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        h2::after {
+            content: " ";
+            display: inline-block;
+            background-color: #E2CD8A;
+            width: 10px;
+            height: 10px;
+            margin-left: 10px;
+        }
+
+        h4 {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.6;
+        }
+
+        a {
+            text-decoration: initial;
+            color: #707070;
+        }
+
+        hr {
+            border: none;
+            border-bottom: solid 2px #E2CD8A;
+            width: 40%;
+            margin-left: 0;
+        }
+
+
+        /* resume */
+
+        .resume {
+            display: flex;
+            max-width: 900px;
+            background-color: #fff;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            border-bottom: solid 10px #E2CD8A;
+        }
+
+        .left,
+        .right {
+            padding: 20px;
+        }
+
+        /* letf */
+
+        .left {
+            flex: 5;
+            padding-right: 50px;
+            border-right: solid 0.5px #E2CD8A;
+        }
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        .btn1 {
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #E2CD8A;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .btn1:hover {
+            background-color: #ead9a4;
+        }
+
+        .btn2 {
+            padding: 10px;
+            border: solid 1px #E2CD8A;
+            border-radius: 5px;
+            color: #E2CD8A
+        }
+
+        .btn2:hover {
+            border-radius: 0px;
+        }
+
+        .listSkill {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+
+        }
+
+        .listSkill li {
+            width: 33%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #555;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(226, 205, 138, 0.5);
+        }
+
+        .circle::after {
+            content: " ";
+            display: block;
+            background-color: #fff;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            border-radius: 50%;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .p90 {
+            width: 50%;
+            height: 50%;
+            top: 0;
+            left: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p180 {
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p270 {
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            right: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .p360 {
+            width: 50%;
+            height: 50%;
+            top: 0;
+            right: 50%;
+            position: absolute;
+            background-color: #E2CD8A;
+        }
+
+        .software li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .software .bar {
+            width: 200px;
+            height: 10px;
+            border: solid 0.5px #E2CD8A;
+            border-radius: 30px;
+        }
+
+        .value {
+            height: 100%;
+            width: 60%;
+            background-color: #E2CD8A;
+            border-radius: 30px;
+        }
+
+        .value.p5 {
+            width: 5%;
+        }
+
+        .value.p10 {
+            width: 10%;
+        }
+
+        .value.p15 {
+            width: 15%;
+        }
+
+        .value.p20 {
+            width: 20%;
+        }
+
+        .value.p25 {
+            width: 25%;
+        }
+
+        .value.p30 {
+            width: 30%;
+        }
+
+        .value.p35 {
+            width: 35%;
+        }
+
+        .value.p40 {
+            width: 40%;
+        }
+
+        .value.p60 {
+            width: 60%;
+        }
+
+        .value.p80 {
+            width: 80%;
+        }
+
+        /* right */
+
+        .right {
+            flex: 7;
+            padding-left: 50px;
+            padding-top: 120px;
+        }
+
+        .decoration {
+            width: 300px;
+            height: 140px;
+            background: linear-gradient(135deg,	#bd9494, #DEDEDE);
+            border-radius: 50% 0;
+            position: absolute;
+            right: 0;
+            top: 30px;
+        }
+
+        .experience>li {
+            display: flex;
+            margin-bottom: 10px;
+
+        }
+
+        .experience li ul {
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: solid 4px #E2CD8A;
+        }
+
+        .experience li:nth-child(1) ul {
+            border-left: solid 4px #E2CD8A
+        }
+
+        .experience li:nth-child(2) ul {
+            border-left: solid 4px #ead596
+        }
+
+        .experience li:nth-child(3) ul {
+            border-left: solid 4px #e8d7a4
+        }
+
+        .experience li:nth-child(4) ul {
+            border-left: solid 4px #f2e3b5
+        }
+
+        .experience li:nth-child(5) ul {
+            border-left: solid 4px #f4e9c8
+        }
+
+        .smalltext {
+            opacity: 70%;
+            font-size: 10px;
+            margin-left: 0;
+        }
+
+        .competition li {
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="left">
+            <img src="林英仁 (1).png"
+                alt="" width="150em" height="150em">
+            <h1>林英仁</h1>
+            <h4>美國伊利諾大學學香檳分校數學博士</h4>
+            <hr>
+            <p>ijlin@mail.ntou.edu.tw</p>
+            <div class="buttons">
+                <a class="btn1 fill" href="https://arspb.most.gov.tw/NSCWebFront/modules/talentSearch/talentSearch.do?action=initRsm05&rsNo=01b442b053494d81aefffca1543a0b4b"
+                 target="_blank">著作</a>
+                 <a class="btn2" href="https://cse.ntou.edu.tw/p/412-1063-7768.php?Lang=zh-tw"
+                    target="_blank">系所自介</a>
+            </div>
+            <div class="block">
+                <h4>Pass or Fail</h4>
+                <h2>推薦程度</h2>
+                <ul class="competition">
+                    <li><img src = "star3.jpg" width = "150px"></li>
+                    <li>這門課不會很難修過!!!</li>
+                </ul>
+            </div>
+            <div class="block">
+                <h4>Conditions & Notices</h4>
+                <h2>條件 & 須知</h2>
+                <ul class="competition">
+                    <li>•必修-3學分</li>
+                    <li>•會隨機點名3次!!!</li>
+                    <li>•考前記得看考古筆記</li>
+                </ul>
+            </div>
+            <div class="block">
+                <h4>score range</h4>
+                <h2>分數占比</h2>
+                <ul class="software">
+                    <li>
+                        其他 Other
+                        <div class="bar">
+                            <div class="value p40"></div>40%
+                        </div>
+                        
+                    </li>
+                    <li>
+                        期中Midtest
+                        <div class="bar">
+                            <div class="value p25"></div>25%
+                        </div>
+                    </li>
+                    <li>
+                        期末Fintest
+                        <div class="bar">
+                            <div class="value p35"></div>35%
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="decoration"></div>
+            <div class="block">
+                <h4>course</h4>
+                <h2>離散數學</h2>
+                <ul class="experience">
+                    <li class="year">start
+                        <ul>
+                            <li>Logic<br><span class="smalltext">Lecture(1)</li>
+                            <li>Sets<br><span class="smalltext">Lecture(2)</li>
+                            <li>functions<br><span class="smalltext">Lecture(3)</li>
+                            <li>Algorithms<br><span class="smalltext">Lecture(4)</li>
+                            <li>integers<br><span class="smalltext">Lecture(5)</li>
+                            <li>matrices<br><span class="smalltext">Lecture(6)</li>
+                            <li>Mathematical Reasoning<br><span class="smalltext">Lecture(7)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test1
+                        <ul>
+                            期中考<br><span class="smalltext">Midterm
+                        </ul>
+                    </li>
+                    <br>
+                    <li class="year">then 
+                        <ul>
+                            <li>Counting techniques<br><span class="smalltext">Lecture(1)</li>
+                            <li>Part II selected topics<br><span class="smalltext">Lecture(2)</li>
+                            <li>Relations<br><span class="smalltext">Lecture(3)</li>
+                            <li>Graphs<br><span class="smalltext">Lecture(4)</li>
+                            <li>Trees<br><span class="smalltext">Lecture(5)</li>
+                            <li>Boolean Algebra<br><span class="smalltext">Lecture(6)</li>
+                        </ul>
+                    </li>
+                    <li class="year">test2
+                        <ul>
+                            期末考<br><span class="smalltext">Final Exam
+                        </ul>
+                    </li>
+                </ul>
+            </div>           
+        </div>
+    </div>
+</body>
+
+</html>
